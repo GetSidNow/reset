@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RESET - Twentynine Palms</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="https://hk-public-images.s3.amazonaws.com/uploads/other/1c0fbe31-3847-47e8-bfbd-ec8b13cc0ae6.jpg" />
+  <!-- Google Font: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+  <!-- Animate.css -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+  <!-- Custom Styles (loaded after Tailwind) -->
+  <style>
+    :root {
+      /* Brand Colors:
+         Background: Black
+         Text & Accent: #b5ae9a */
+      --bg-color: #000000;
+      --text-color: #b5ae9a;
+      --accent-color: #b5ae9a;
+    }
+    body {
+      background-color: var(--bg-color) !important;
+      color: var(--text-color) !important;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+    }
+    .top-bar {
+      background-color: var(--bg-color) !important;
+      border-bottom: 1px solid var(--accent-color) !important;
+    }
+    .card {
+      background-color: var(--bg-color) !important;
+      border: 1px solid var(--accent-color) !important;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 6px rgba(181,174,154, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px -15px var(--accent-color) !important;
+    }
+    .tab {
+      background-color: transparent !important;
+      color: var(--text-color) !important;
+      border: none;
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+    .tab.active {
+      border-bottom: 3px solid var(--accent-color) !important;
+    }
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease-in;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .icon {
+      width: 24px;
+      height: 24px;
+      stroke: var(--accent-color);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    a {
+      color: var(--accent-color) !important;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .btn {
+      background-color: var(--accent-color) !important;
+      color: var(--bg-color) !important;
+      font-weight: 600;
+    }
+    #navBar {
+      background-color: var(--bg-color) !important;
+      border-bottom: 1px solid var(--accent-color) !important;
+    }
+  </style>
+</head>
+<body style="background-color: #000000 !important; color: #b5ae9a !important;" class="min-h-screen p-4 md:p-8">
+  <!-- Fixed Top Bar -->
+  <div class="top-bar fixed top-0 left-0 right-0 z-50 p-4 text-center">
+    <h1 class="text-2xl font-bold">RESET</h1>
+    <p class="text-sm">Guest Guide Book</p>
+  </div>
+  
+  <!-- Main Container -->
+  <div class="max-w-4xl mx-auto pt-20">
+    <!-- Header Section with Contact Buttons -->
+    <header class="text-center mb-10 animate__animated animate__fadeIn">
+      <div class="flex flex-row justify-center items-center gap-4 mb-6 overflow-x-auto">
+        <a href="sms:+17603626100" class="inline-block btn py-2 px-4 rounded-full">
+          Text us
+        </a>
+        <a href="tel:+17603626100" class="inline-block btn py-2 px-4 rounded-full">
+          Call us
+        </a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=7000+Split+Rock+Ave,+Twentynine+Palms,+CA+92277" target="_blank" class="inline-block btn py-2 px-4 rounded-full">
+          Direction
+        </a>
+      </div>
+      <p class="text-lg">7000 Split Rock Ave, Twentynine Palms, CA 92277</p>
+      <p class="mt-2 text-lg">Visit our website: <a href="https://www.stayreset.com/" target="_blank" class="hover:underline">stayreset.com</a></p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="relative mb-8">
+      <!-- Left Arrow -->
+      <button onclick="scrollNav(-100)" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-50 p-2 rounded-full shadow">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      
+      <!-- Tab Bar -->
+      <nav id="navBar" class="flex overflow-x-auto border-b">
+        <button class="tab active" onclick="switchTab('welcome')">Welcome Home</button>
+        <button class="tab" onclick="switchTab('policies')">House Rules</button>
+        <button class="tab" onclick="switchTab('amenities')">Our Amenities</button>
+        <button class="tab" onclick="switchTab('dining')">Eat & Drink</button>
+        <button class="tab" onclick="switchTab('area')">Explore Local</button>
+        <button class="tab" onclick="switchTab('bookdirect')">🎉 Book Direct & Save</button>
+        <button class="tab" onclick="switchTab('feedback')">Share Your Thoughts</button>
+      </nav>
+      
+      <!-- Right Arrow -->
+      <button onclick="scrollNav(100)" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-50 p-2 rounded-full shadow">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="space-y-12">
+      <!-- Welcome Section -->
+      <div id="welcome" class="tab-content active">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Wi‑Fi Card -->
+          <div class="card p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <svg class="icon mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
+              </svg>
+              <h3 class="text-xl font-semibold">Wi‑Fi Access</h3>
+            </div>
+            <p class="text-sm">Network: <span class="font-semibold">RESET_Guest</span></p>
+            <p class="text-sm">Password: <span class="font-semibold">StayReset</span></p>
+            <a id="wifiConnect" href="#" class="inline-block mt-4 btn py-2 px-4 rounded-full">
+              Connect Now
+            </a>
+          </div>
+          <!-- Check-in/out Card -->
+          <div class="card p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <svg class="icon mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <h3 class="text-xl font-semibold">Check‑in/out</h3>
+            </div>
+            <p class="text-sm mb-2">Check‑in: 3:00 PM</p>
+            <p class="text-sm">Check‑out: 11:00 AM</p>
+            <p class="text-sm mt-2">Early check-in available for $35.00 (if before 2:00 PM, subject to availability).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- House Rules Section -->
+      <div id="policies" class="tab-content">
+        <div class="card p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4">House Rules</h3>
+          <ul class="space-y-4">
+            <li class="flex items-center">
+              <svg class="icon mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              100% smoke‑free property
+            </li>
+            <li class="flex items-center">
+              <svg class="icon mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              Pet‑free facility
+            </li>
+            <li class="flex items-center">
+              <svg class="icon mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              Valid ID and credit card required at check‑in
+            </li>
+            <li class="flex items-start">
+              <svg class="icon mr-3 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>
+                A <strong>$100.00 room deposit</strong> is required upon check-in for incidentals.
+              </span>
+            </li>
+            <li class="flex items-start">
+              <svg class="icon mr-3 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>
+                Early check-in is available for <strong>$35.00</strong> if needed before 2:00 PM (subject to availability).
+              </span>
+            </li>
+            <li class="flex items-start">
+              <svg class="icon mr-3 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>
+                The office is open until 9:00 PM. For after-hours check-in, please text or call us.
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Amenities Section -->
+      <div id="amenities" class="tab-content">
+        <div class="card p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4">Hotel Amenities</h3>
+          <ul class="space-y-4">
+            <li class="flex items-center">
+              <svg class="icon mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5 13l4 4L19 7"/>
+              </svg>
+              Free self‑parking
+            </li>
+            <li class="flex items-center">
+              <svg class="icon mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5 13l4 4L19 7"/>
+              </svg>
+              High‑speed Wi‑Fi
+            </li>
+            <li class="flex items-center">
+              <svg class="icon mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5 13l4 4L19 7"/>
+              </svg>
+              24/7 Front Desk
+            </li>
+          </ul>
+          <div class="mt-6">
+            <h4 class="text-lg font-semibold mb-2">Add-ons</h4>
+            <ul class="list-disc list-inside">
+              <li>Extra car: $20 plus tax</li>
+              <li>Parking after checkout: $20 plus tax</li>
+              <li>Rollaway bed: $20 plus tax</li>
+              <li>Late check‑out (12pm to 2pm): $25 plus tax</li>
+            </ul>
+          </div>
+          <p class="mt-4 text-sm">
+            Please note: Our pool is closed for remodeling until further notice.
+          </p>
+        </div>
+      </div>
+
+      <!-- Dining Section -->
+      <div id="dining" class="tab-content">
+        <div class="card p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4">Dining Options</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="font-medium mb-2">Breakfast</h4>
+              <p class="text-sm">Continental breakfast served daily 6:30 AM - 9:30 AM</p>
+            </div>
+            <div>
+              <h4 class="font-medium mb-2">Bars</h4>
+              <p class="text-sm">
+                Discover vibrant bars and lounges in the area.
+                <a href="https://www.google.com/maps/search/?api=1&query=Bars+Twentynine+Palms" target="_blank" class="hover:underline">
+                  View on Map
+                </a>
+              </p>
+            </div>
+            <div>
+              <h4 class="font-medium mb-2">Restaurants</h4>
+              <p class="text-sm">
+                Enjoy a variety of dining options from casual eateries to fine dining.
+                <a href="https://www.google.com/maps/search/?api=1&query=Restaurants+Twentynine+Palms" target="_blank" class="hover:underline">
+                  View on Map
+                </a>
+              </p>
+            </div>
+            <div>
+              <h4 class="font-medium mb-2">Brunch Spots</h4>
+              <p class="text-sm">
+                Check out popular brunch spots to start your day.
+                <a href="https://www.google.com/maps/search/?api=1&query=Brunch+Twentynine+Palms" target="_blank" class="hover:underline">
+                  View on Map
+                </a>
+              </p>
+            </div>
+            <div>
+              <h4 class="font-medium mb-2">Cafés</h4>
+              <p class="text-sm">
+                Relax at charming cafés around town.
+                <a href="https://www.google.com/maps/search/?api=1&query=Cafés+Twentynine+Palms" target="_blank" class="hover:underline">
+                  View on Map
+                </a>
+              </p>
+            </div>
+            <div>
+              <h4 class="font-medium mb-2">Additional Services</h4>
+              <p class="text-sm">24/7 coffee and tea in the lobby</p>
+              <p class="text-sm">Local restaurant delivery available</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Explore Local / Area Guide Section -->
+      <div id="area" class="tab-content">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Joshua Tree National Park -->
+          <div class="card p-6 rounded-lg">
+            <h3 class="text-xl font-semibold mb-4">
+              <a href="https://www.google.com/maps/search/?api=1&query=Joshua+Tree+National+Park" target="_blank" class="hover:underline">
+                Joshua Tree National Park
+              </a>
+            </h3>
+            <p class="text-sm mb-2">Marvel at the iconic desert landscapes and majestic Joshua trees.</p>
+            <p class="text-sm">Approx. 30 minutes drive.</p>
+          </div>
+          <!-- Pioneertown -->
+          <div class="card p-6 rounded-lg">
+            <h3 class="text-xl font-semibold mb-4">
+              <a href="https://www.google.com/maps/search/?api=1&query=Pioneertown" target="_blank" class="hover:underline">
+                Pioneertown
+              </a>
+            </h3>
+            <p class="text-sm mb-2">Experience an authentic Old West vibe in this historic desert town.</p>
+            <p class="text-sm">Approx. 25 minutes drive.</p>
+          </div>
+          <!-- Downtown Twentynine Palms -->
+          <div class="card p-6 rounded-lg">
+            <h3 class="text-xl font-semibold mb-4">
+              <a href="https://www.google.com/maps/search/?api=1&query=Downtown+Twentynine+Palms" target="_blank" class="hover:underline">
+                Downtown Twentynine Palms
+              </a>
+            </h3>
+            <p class="text-sm mb-2">Discover local art galleries, boutique shops, and quaint dining spots.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book Direct & Save Section -->
+      <div id="bookdirect" class="tab-content">
+        <div class="card p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4">🎉 Book Direct & Save</h3>
+          <p class="mb-4 text-sm">
+            Enjoy our best available rates when you book directly with us. Next time you plan a visit, simply call or text us – or check our website for the latest offers.
+          </p>
+          <a href="https://www.stayreset.com/" target="_blank" class="inline-block btn font-bold py-2 px-4 rounded-full">
+            Book Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Share Your Thoughts Section -->
+      <div id="feedback" class="tab-content">
+        <div class="card p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4">✨ Share Your Experience</h3>
+          <div class="w-full h-screen max-h-[800px] overflow-hidden rounded-lg">
+            <iframe
+              src="https://feedback.guesttouch.com/5ff7108f087a7600081b37a2/write"
+              width="100%"
+              height="100%"
+              frameborder="0"
+              style="background-color: var(--bg-color);"
+              title="Feedback Form">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript for Tabs and Navigation -->
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelector(`[onclick="switchTab('${tabId}')"]`).classList.add('active');
+  
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+    }
+    
+    function scrollNav(amount) {
+      const navBar = document.getElementById("navBar");
+      navBar.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+    
+    document.addEventListener("DOMContentLoaded", function() {
+      const wifiButton = document.getElementById("wifiConnect");
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+        wifiButton.href = "App-Prefs:root=WIFI";
+      } else if (navigator.userAgent.match(/Android/i)) {
+        wifiButton.href = "intent://settings#Intent;action=android.settings.WIFI_SETTINGS;end";
+      } else {
+        wifiButton.href = "#";
+      }
+    });
+  </script>
+</body>
+</html>
